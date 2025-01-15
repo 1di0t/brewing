@@ -1,0 +1,26 @@
+/* src/App.css */
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  min-height: 100vh;
+  background-color: #f2ede7;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.image-container {
+  margin: 20px 0;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+.coffee-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}

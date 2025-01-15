@@ -1,0 +1,19 @@
+keras                        == 3.7.0
+langchain                    == 0.3.14
+langchain-community          == 0.3.14
+nltk                         == 3.9.1
+npx                          == 0.1.6
+numpy                        == 1.26.3
+pandas                       == 2.2.3
+scikit-learn                 == 1.6.0
+transformers                 == 4.47.1
+sentence-transformers        == 3.3.1
+tf_keras                     == 2.18.0
+threadpoolctl                == 3.5.0
+tokenizers                   == 0.21.0
+torch                        == 2.2.0
+uvicorn                      == 0.34.0
+fastapi                      == 0.115.6
+faiss-cpu                    == 1.9.0.post1
+huggingface-hub              == 0.27.0
+
