@@ -1,23 +1,30 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
-from langchain.llms import HuggingFacePipeline
+import os
+os.environ["HF_HOME"] = "E:\self\huggingface_cache"
 
-def load_llama_llm(model_name_or_path="meta-llama/Llama-2-7b-hf", use_auth_token=None):
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+from langchain_huggingface import HuggingFacePipeline
+
+
+def load_llama_llm(model_name_or_path="meta-llama/Llama-2-7b-hf", token=None):
     """
-    - LLaMA2 모델 로드 (GPU 환경 권장)
-    - use_auth_token: Hugging Face access token (gated repo 접근 시 필요)
+    - Llama2 model load (GPU environment recommended)
+    - token: Hugging Face access token 
     """
-    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_auth_token=use_auth_token)
+    
+    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token=token,)
     model = AutoModelForCausalLM.from_pretrained(
         model_name_or_path,
-        device_map="auto",        # GPU 여러 개나 CPU 환경 등에 맞게 설정
-        torch_dtype="auto",       # 가능하다면 bfloat16, float16 등 설정
-        use_auth_token=use_auth_token
+        device_map="auto",        
+        torch_dtype="auto",       
+        token=token
+        
     )
     generation_pipeline = pipeline(
         "text-generation",
         model=model,
         tokenizer=tokenizer,
-        max_length=512,
+        max_length=1024,
+        truncation=True,
         temperature=0.7
     )
     llm = HuggingFacePipeline(pipeline=generation_pipeline)
