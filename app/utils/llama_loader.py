@@ -25,7 +25,8 @@ def load_llama_llm(model_name_or_path="meta-llama/Llama-2-7b-hf", token=None):
         tokenizer=tokenizer,
         max_length=1024,
         truncation=True,
-        temperature=0.7
+        temperature=0.7,
+        top_p = 0.9,
     )
     llm = HuggingFacePipeline(pipeline=generation_pipeline)
     return llm

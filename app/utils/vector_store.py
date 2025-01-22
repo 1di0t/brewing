@@ -4,7 +4,7 @@ import pandas as pd
 
 def create_vector_store_from_coffee_df(coffee_df: pd.DataFrame):
     """
-    Generate text from the dataset by combining origin, desc_1, desc_3, roast, and agtron.
+    Generate text from the dataset by combining origin, desc_1, roast, and agtron.
     Create embeddings → Build a FAISS vector store.
     """
 
@@ -19,7 +19,6 @@ def create_vector_store_from_coffee_df(coffee_df: pd.DataFrame):
             f"Roast: {row['roast']}\n"
             f"Agtron: {row['agtron']}\n"
             f"Description1: {row['desc_1']}\n"
-            f"Description2: {row['desc_3']}"
         )
         texts.append(text_content)
         
@@ -29,7 +28,6 @@ def create_vector_store_from_coffee_df(coffee_df: pd.DataFrame):
             "roast": row["roast"],
             "agtron": row["agtron"],
             "desc_1": row["desc_1"],
-            "desc_2": row["desc_3"]
         })
     
     # FAISS vector store
