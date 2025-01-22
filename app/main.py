@@ -51,7 +51,7 @@ def startup_event():
 
 
 
-# 3) 추천 API
+# Recommand API
 @app.post("/recommend_coffee")
 async def recommend_coffee(user_query: UserQuery):
     """
@@ -62,12 +62,9 @@ async def recommend_coffee(user_query: UserQuery):
     answer = coffee_qa_chain.invoke({"query":question})
     print(f"answer\n======================================\n: {answer}")
     
-    # Translate the answer to Korean
-    #answer['result'] = translate_with_nllb(text=answer['result'], src_lang="eng", tgt_lang="ko")
-    
     # Extract only answer in the 'result' field
     answer['result'] = extract_origin_text(answer['result'])
-    #answer['result'] = answer['result'].replace('\n\n', ' ')
+    
     return {"answer": answer}
 
 #uvicorn main:app --reload
