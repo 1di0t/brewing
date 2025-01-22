@@ -27,7 +27,7 @@ function App() {
       const data = await response.json();
       const newBotMessage = {
         sender: "bot",
-        query: userInput,
+        query: data.answer.query, // user query
         result: data.answer.result, // server response
         timestamp: new Date().toISOString(),
       };
@@ -48,6 +48,10 @@ function App() {
 
   return (
     <div className="App">
+      <header className="app-header">
+        <h1 className="app-title">BrewWing</h1>
+    
+      </header>
       <ChatWindow messages={messages} />
       {loading && <div className="loading-message">Loading...</div>}
       <InputBar onSendMessage={handleSendMessage} />

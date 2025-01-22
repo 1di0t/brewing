@@ -13,7 +13,7 @@ function ChatWindow({ messages }) {
           <div className="chat-text">
             {msg.sender === "user" ? msg.query : msg.result}
           </div>
-          <div className="chat-timestamp">
+          <div className={`chat-timestamp ${msg.sender === "user" ? "user-timestamp" : "bot-timestamp"}`}>
             {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </div>
         </div>

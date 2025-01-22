@@ -28,9 +28,11 @@ function InputBar({ onSendMessage }) {
         value={inputValue}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        placeholder="원하시는 커피 취향을 말씀해 주세요..."
+        placeholder="원하시는 커피 취향을 말씀해 주세요"
+        className="input-field"
+        aria-label="커피 취향 입력"
       />
-      <button onClick={handleSend}>전송</button>
+      <button onClick={handleSend} className="send-button" aria-label="메시지 전송">전송</button>
     </div>
   );
 }
