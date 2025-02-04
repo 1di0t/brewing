@@ -7,7 +7,7 @@ def create_coffee_retrieval_qa_chain(llm: BaseLLM, vectorstore: VectorStore):
     chain generation for coffee recommendation
     based on the LLM and vectorstore
     """
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 1})
 
     
     coffee_qa_chain = RetrievalQA.from_chain_type(

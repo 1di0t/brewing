@@ -2,38 +2,35 @@ import re
 
 def extract_origin_text(data: str) -> str:
     """
-    Extract the portion of the text starting from '\n\nOrigin:' and ending at the last '\n\n'.
-    
-    Args:
-        data (dict): A dictionary containing the 'result' key with the text to process.
-
-    Returns:
-        str: The extracted portion of the text, or an empty string if not found.
+    Extract the origin text from the result text
+    result_text: str
     """
     result_text = data
 
-    # Regular expression to capture the block starting from '\n\nOrigin:' and ending before the last '\n\n'
-    match = re.search(r"(\n\nOrigin:.*?\n\n)", result_text, re.DOTALL)
+    # extract the origin text
+    match = re.search(r"(\nOrigin:.*?\n\n)", result_text, re.DOTALL)
 
     if match:
         return match.group(1).strip()
     return ""
 
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import pipeline
 
-def translate_with_nllb(text: str, src_lang: str, tgt_lang: str) -> str:
-    model_name = "facebook/nllb-200-distilled-600M"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+translator = pipeline(
+    'translation',
+    model='facebook/nllb-200-distilled-600M',
+    device=0,
+    src_lang='eng_Latn',  # input language
+    tgt_lang='kor_Hang',  # output language
+    max_length=512
+)
 
-    # generate input 
-    input_text = f">>{tgt_lang}<< {text}"
-    print(input_text)
-    inputs = tokenizer(input_text, return_tensors="pt",padding=True)
-
-    # translate
-    translated = model.generate(**inputs)
-    translated_text = tokenizer.decode(translated[0], skip_special_tokens=True)
-    return translated_text
-
-
+def translate_with_linebreaks(text):
+    """
+    Translate text with line breaks
+    text: str
+    return: str
+    """
+    lines = [line.strip() for line in text.split('\n') if line.strip()]
+    translated = translator(lines, batch_size=8)
+    return '\n'.join([t['translation_text'] for t in translated])

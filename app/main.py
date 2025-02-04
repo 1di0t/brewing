@@ -7,10 +7,13 @@ from utils.data_processing import load_and_preprocess_coffee_data
 from utils.vector_store import create_vector_store_from_coffee_df
 from utils.llama_loader import load_llama_llm
 from utils.coffee_chain import create_coffee_retrieval_qa_chain
-from utils.text import extract_origin_text, translate_with_nllb
+from utils.text import extract_origin_text, translate_with_linebreaks
 
 
 import os
+import sys
+
+sys.tracebacklimit = 50
 
 load_dotenv()
 
@@ -60,11 +63,14 @@ async def recommend_coffee(user_query: UserQuery):
     print(f"user_query: {user_query}")
     question = user_query.query
     answer = coffee_qa_chain.invoke({"query":question})
-    print(f"answer\n======================================\n: {answer}")
+    
     
     # Extract only answer in the 'result' field
     answer['result'] = extract_origin_text(answer['result'])
-    
+    print(f"answer\n======================================\n: {answer}")
+
+    answer['result'] = translate_with_linebreaks(answer['result'])
+    print(f"answer\n======================================\n: {answer}")
     return {"answer": answer}
 
 #uvicorn main:app --reload
