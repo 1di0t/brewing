@@ -16,12 +16,14 @@ def extract_origin_text(data: str) -> str:
 
 from transformers import pipeline
 
+target_lang = 'kor_Hang'  # target language
+
 translator = pipeline(
     'translation',
     model='facebook/nllb-200-distilled-600M',
     device=0,
     src_lang='eng_Latn',  # input language
-    tgt_lang='kor_Hang',  # output language
+    tgt_lang=target_lang,  # output language
     max_length=512
 )
 

@@ -67,10 +67,10 @@ async def recommend_coffee(user_query: UserQuery):
     
     # Extract only answer in the 'result' field
     answer['result'] = extract_origin_text(answer['result'])
-    print(f"answer\n======================================\n: {answer}")
+
 
     answer['result'] = translate_with_linebreaks(answer['result'])
-    print(f"answer\n======================================\n: {answer}")
+
     return {"answer": answer}
 
 #uvicorn main:app --reload
