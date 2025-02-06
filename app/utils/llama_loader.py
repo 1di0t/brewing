@@ -23,7 +23,7 @@ def load_llama_llm(model_name_or_path="meta-llama/Llama-2-7b-hf", token=None):
         "text-generation",
         model=model,
         tokenizer=tokenizer,
-        max_length=2048,
+        max_length=1024,
         max_new_tokens=128,
         truncation=True,
         temperature=0.7,
