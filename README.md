@@ -1,20 +1,30 @@
-Coffee Bean Recommendation Page
+# **Coffee Bean Recommendation Page**
 
-This is a simple chatbot-based web page designed to help users find coffee beans that match their preferences.
+사용자의 선호도에 맞는 커피 원두를 추천해주는 간단한 챗봇 기반 웹 페이지입니다.​
 
-Purpose
+**목적**
 
-The main goal of this project is to utilize the Hugging Face library, LangChain, and RAG (Retrieval-Augmented Generation) technology to provide recommendations based on user input.
+이 프로젝트의 주요 목표는 Hugging Face 라이브러리, LangChain, RAG(Retrieval-Augmented Generation) 기술을 활용하여 사용자 입력에 기반한 추천 시스템을 제공하는 것입니다.​
 
-Features
+**주요 기능**
 
-Uses LLaMA and Hugging Face library for natural language processing.
+- LLaMA와 Hugging Face 라이브러리를 활용한 자연어 처리​
 
-Implements LangChain to manage conversational interactions.
+- LangChain을 통한 대화형 인터랙션 관리​
 
-Employs RAG (Retrieval-Augmented Generation) to enhance the recommendation system.
+- RAG(Retrieval-Augmented Generation)를 활용한 추천 시스템 강화​
 
-Provides an easy-to-use chatbot interface for users to interact with.
+- 사용자가 쉽게 상호작용할 수 있는 챗봇 인터페이스 제공​
 
-#pipeline
-https://github.com/1di0t/brewing_pipe
+**기술 스택**
+
+<img src="https://img.shields.io/badge/python-%233776AB.svg?&style=for-the-badge
+&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/fastapi-%23009688.svg?&style=for-the-badge&logo=fastapi&logoColor=white" />
+
+**자연어 처리: Hugging Face Transformers, LLaMA**
+​
+
+**대화 관리: LangChain​**
+
+
+**추천 시스템: RAG**
