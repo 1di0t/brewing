@@ -20,7 +20,8 @@
 
 
 <img src="https://img.shields.io/badge/python-%233776AB.svg?&style=for-the-badge
-&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/fastapi-%23009688.svg?&style=for-the-badge&logo=fastapi&logoColor=white" />
+&logo=python&logoColor=white" /> 
+<img src="https://img.shields.io/badge/fastapi-%23009688.svg?&style=for-the-badge&logo=fastapi&logoColor=white" />
 
 **자연어 처리: Hugging Face Transformers, LLaMA**
 ​
